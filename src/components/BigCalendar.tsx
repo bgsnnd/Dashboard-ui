@@ -13,7 +13,7 @@ const localizer = momentLocalizer(moment)
 // Filter event hanya antara jam 8:00 pagi hingga 5:00 sore
 const filteredEvents = calendarEvents.filter(event => {
     const eventStartHour = event.start.getHours();
-    return eventStartHour >= 8 && eventStartHour < 17;
+    return eventStartHour >= 8 && eventStartHour < 15;
   });
 
 const BigCalendar = () => {
@@ -35,7 +35,7 @@ const BigCalendar = () => {
             style={{ height: 900 }}
             onView={handleOnChangeView}
             min={new Date(2026,0,0,8,0,0)}
-            max={new Date(2026,0,0,17,0,0)}
+            max={new Date(2026,0,0,15,0,0)}
             />
         </div>
     );
