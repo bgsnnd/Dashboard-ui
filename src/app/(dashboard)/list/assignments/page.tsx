@@ -1,3 +1,4 @@
+import FormModal from "@/components/FormModal"
 import Pagination from "@/components/Pagination"
 import Table from "@/components/Table"
 import TableSearch from "@/components/TableSearch"
@@ -50,15 +51,11 @@ const AssigmentListPage = () =>{
             <td className="hidden md:table-cell">{item.dueDate}</td>
             <td>
                 <div className="flex items-center gap-2">
-                    <Link href={'/list/teacher/${$item.id}'} >
-                        <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
-                            <Image src="/edit.png" alt="" width={16} height={16} />
-                        </button>
-                    </Link>
                     { role === "admin" && (
-                        <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
-                        <Image src="/delete.png" alt="" width={16} height={16} />
-                        </button>
+                        <>
+                            <FormModal table="assignment" type="update" data={item}/>
+                            <FormModal table="assignment" type="delete" id={item.id}/>
+                        </>
                     )}
                 </div>
             </td>
@@ -83,9 +80,7 @@ const AssigmentListPage = () =>{
                         </button>
                     
                         { role === "admin" && (
-                            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow">
-                            <Image src="/plus.png" alt="" width={14} height={14} />
-                            </button>
+                            <FormModal table="assignment" type="create"/>
                         )}
                         
                     </div>
