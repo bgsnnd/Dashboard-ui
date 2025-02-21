@@ -4,6 +4,7 @@ import { JSXElementConstructor, useState } from "react";
 // import TeacherForm from "./form/TeacherForm";
 // import StudentForm from "./form/StudentForm";
 import dynamic from "next/dynamic";
+import { FormContainerProps } from "./FormContainer";
 
 
 const TeacherForm = dynamic(()=> import("./form/TeacherForm"),{
@@ -45,33 +46,15 @@ const FormModal = ({
     type, 
     data, 
     id,
-}: {
-    table:
-    | "teacher"
-    | "student"
-    | "parent"
-    | "subject"
-    | "class"
-    | "lesson"
-    | "exam"
-    | "assignment"
-    | "result"
-    | "attendance"
-    | "event"
-    | "announcement";
-    type: "create" | "update" | "delete";
-    data?: any;
-    id?: number;
-}) => {
-
-    const size = type === "create" ? "w-8 h-8" : "w-7 h-7"; 
-    const bgColor = 
-        type === "create" 
-        ? "bg-lamaYellow" 
-        : type === "update" 
-        ? "bg-lamaSky" 
+}: FormContainerProps & { relatedData?: any }) => {
+    const size = type === "create" ? "w-8 h-8" : "w-7 h-7";
+    const bgColor =
+      type === "create"
+        ? "bg-lamaYellow"
+        : type === "update"
+        ? "bg-lamaSky"
         : "bg-lamaPurple";
-
+  
     const [open, setOpen] = useState(false);
 
     const Form = () => {
